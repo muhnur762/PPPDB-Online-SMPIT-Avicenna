@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class sambutModel extends Model
+class SambutModel extends Model
 {
     protected $table = 'sambutan';
     protected $useTimestamps = 'true';

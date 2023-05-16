@@ -1,32 +1,68 @@
 <?php $this->extend('tamplate/tamplateweb'); ?>
 
 <?php $this->section('content');  ?>
-<div class="bg bg-info d-flex align-items-center" style="height: 100vh;">
+<div class=" d-flex align-items-center contact">
     <div class="container ">
         <div class="row">
             <div class="col">
-                <H1>Contact</H1>
-                <h5>Phone :</h5>
-                <h6>09803833833</h6>
+                <h1 class="mb-4 warna">Conect With Us</h1>
             </div>
-            <div class="col">
-                <div class="card p-4">
-                    <div class="mb-3">
-                        <label for="nama" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="nama" placeholder="Name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="pesan" class="form-label">Message</label>
-                        <textarea class="form-control" id="pesan" rows="3"></textarea>
-                    </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="media-body">
+                    <h4 class="media-heading warna mt-0 font-weight-bold mb-3">Address:</h4>
+                    <p class="text-muted font-weight-medium">Vila Indah Permai Blok G26 Teluk Pucung, Teluk Pucung, Kec. Bekasi Utara, Kota Bekasi Prov. Jawa Barat</p>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading warna mt-0 font-weight-bold mb-3">Telp:</h4>
+                    <p class="text-muted font-weight-medium">xxxx-xxxx-xxxx</p>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading warna mt-0 font-weight-bold mb-3">Fax:</h4>
+                    <p class="text-muted font-weight-medium">xxxx-xxxx-xxxx</p>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading warna mt-0 font-weight-bold mb-3">Email:</h4>
+                    <p class="text-muted font-weight-medium">Email.email.com</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-block my-auto">
+                    <?php if (session()->getFlashdata('pesan')) :  ?>
+                        <div class="alert alert-success alert-dismissible fade show w-100" role="alert">
+                            <?= session()->getFlashdata('pesan'); ?>
+                        </div>
+                    <?php endif;  ?>
+                    <form action="web/kirimPesan" method="post">
+                        <div class="mb-3">
+                            <label class="form-label warna" for="form6Example1">Name</label>
+                            <input type="text" name="nama" id="form6Example1" class="form-control <?= (validation_show_error('nama')) ? 'is-invalid' : ''; ?>" value="<?= old('nama'); ?>" autofocus />
+                            <div id="validationServer03Feedback" class="invalid-feedback">
+                                <?= (validation_show_error('nama')); ?>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label warna" for="form6Example1">Email</label>
+                            <input type="email" name="email" id="form6Example1" class="form-control <?= (validation_show_error('email')) ? 'is-invalid' : ''; ?>" value="<?= old('email'); ?>" autofocus />
+                            <div id="validationServer03Feedback" class="invalid-feedback">
+                                <?= (validation_show_error('email')); ?>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label warna" for="form6Example7">Message</label>
+                            <textarea class="form-control <?= (validation_show_error('pesan')) ? 'is-invalid' : ''; ?>" name="pesan" rows="4"><?= old('pesan'); ?></textarea>
+                            <div id="validationServer03Feedback" class="invalid-feedback">
+                                <?= (validation_show_error('pesan')); ?>
+                            </div>
+                        </div>
+                        <input type="submit" class="mybtn" name="submit">
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+
 </div>
 <?php $this->endSection();  ?>

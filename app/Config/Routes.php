@@ -40,7 +40,47 @@ $routes->get('/news', 'Web::news');
 $routes->get('/pengumuman', 'Web::pengumuman');
 $routes->get('/prestasi', 'Web::prestasi');
 $routes->get('/contact', 'Web::contact');
+$routes->get('/foto', 'Web::foto');
+$routes->get('/vidio', 'Web::vidio');
+$routes->get('/gtk', 'Web::gtk');
+$routes->get('/ppdb', 'Web::ppdb');
 $routes->get('/news/(:segment)', 'Web::newsdetail/$1');
+
+// $routes->get('/admin', 'admin::home');
+$routes->get('/admin', 'admin::home', ['filter' => 'role:admin,super admin,user']);
+
+$routes->get('/admin/news', 'admin::news', ['filter' => 'role:admin,super admin']);
+$routes->get('/admin/addNews', 'admin::addNews', ['filter' => 'role:admin,super admin']);
+$routes->get('/admin/editNews/(:segment)', 'admin::editNews/$1', ['filter' => 'role:admin,super admin']);
+$routes->delete('/admin/news/(:num)', 'admin::deleteNews/$1', ['filter' => 'role:admin,super admin']);
+$routes->get('/admin/news/(:any)', 'admin::detailNews/$1', ['filter' => 'role:admin,super admin']);
+
+$routes->get('/admin/foto', 'admin::foto', ['filter' => 'role:admin,super admin']);
+$routes->get('/admin/addFoto', 'admin::addFoto', ['filter' => 'role:admin,super admin']);
+$routes->get('/admin/editFoto/(:segment)', 'admin::editFoto/$1', ['filter' => 'role:admin,super admin']);
+$routes->delete('/admin/foto/(:num)', 'admin::deleteFoto/$1', ['filter' => 'role:admin,super admin']);
+
+$routes->get('/admin/banner', 'admin::banner', ['filter' => 'role:admin,super admin']);
+
+$routes->get('/admin/pesan', 'admin::pesan', ['filter' => 'role:super admin']);
+$routes->get('/admin/editPesan/(:segment)', 'admin::editPesan/$1', ['filter' => 'role:admin,super admin']);
+
+
+$routes->get('/admin/adminList', 'admin::adminList', ['filter' => 'role:super admin']);
+$routes->get('/admin/userList', 'admin::userList', ['filter' => 'role:super admin']);
+$routes->get('/admin/addAdmin', 'admin::addAdmin', ['filter' => 'role:super admin']);
+$routes->get('/admin/userList/(:segment)', 'admin::editAdmin/$1', ['filter' => 'role:super admin']);
+$routes->delete('/admin/userList/(:num)', 'admin::deleteAdmin/$1', ['filter' => 'role:super admin']);
+$routes->delete('/admin/resetPassword/(:num)', 'admin::resetPassword/$1', ['filter' => 'role:super admin']);
+$routes->delete('/admin/timeLine/(:num)', 'admin::deleteTimeine/$1', ['filter' => 'role:super admin']);
+$routes->get('/admin/timeLine', 'admin::timeLine', ['filter' => 'role:super admin']);
+
+$routes->get('/user', 'user::index', ['filter' => 'role:user']);
+$routes->get('/user/myProfile/(:any)', 'user::myProfile/$1', ['filter' => 'role:user,admin,super admin']);
+
+$routes->get('/user/formulir/(:any)', 'user::formulir/$1', ['filter' => 'role:user']);
+
+
 
 /*
  * --------------------------------------------------------------------

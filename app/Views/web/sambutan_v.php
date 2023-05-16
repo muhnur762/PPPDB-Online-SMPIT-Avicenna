@@ -1,9 +1,8 @@
 <?php $this->extend('tamplate/sidebar');  ?>
-<?php $this->section('contentMain');  ?>
-<script>
 
-</script>
-<h1 class="warna">sambutan Kepala sekolah</h1>
+<?php $this->section('contentMain');  ?>
+
+<h1 class="warna">Sambutan Kepala Sekolah</h1>
 <hr>
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -18,4 +17,12 @@
     <p><?= $sambut['isi']; ?></p>
 </div>
 
+
+
+<?php $this->endSection();  ?>
+<?php $this->section('conditional')  ?>
+<script>
+    const sambutan = document.querySelector('.sambutan-side');
+    sambutan.style.display = "none";
+</script>
 <?php $this->endSection();  ?>

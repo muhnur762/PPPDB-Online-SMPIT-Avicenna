@@ -2,10 +2,10 @@
 <?php $this->section('contentMain');  ?>
 <?php
 if ($detail['created_at'] == $detail['updated_at']) {
-    $tanggal = date('d m Y', strtotime($detail['created_at']));
+    $tanggal = date('d M Y', strtotime($detail['created_at']));
     $jam = date('H:i', strtotime($detail['created_at']));
 } else {
-    $tanggal = date('d m Y', strtotime($detail['updated_at'])) . "(Diedit)";
+    $tanggal = date('d M Y', strtotime($detail['updated_at'])) . " (Diedit)";
     $jam = date('H:i', strtotime($detail['updated_at']));
 }
 ?>
@@ -23,10 +23,34 @@ if ($detail['created_at'] == $detail['updated_at']) {
         </div>
     </div>
     <div class="cover-detail">
-        <img src="<?= base_url('assets/other/' . $detail['cover']) ?>" alt="cover" class="w-100" style="border-radius: 10px;">
+        <img src="<?= base_url('assets/cover/' . $detail['cover']) ?>" alt="cover" class="w-100" style="border-radius: 10px;">
     </div>
-    <div class="isi-detail">
+    <div class="isi-detail ">
         <?= $detail['isi']; ?>
+        <div class="file-responsive <?= (empty($detail['file'])) ? "d-none" : ""; ?>">
+            <iframe src="<?= base_url('assets/file/' . $detail['file']); ?>"></iframe>
+        </div>
+    </div>
+    <div class="share mt-5">
+        <?php
+        $link = $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+        ?>
+        <p class="text-muted">Share :</p>
+        <div class="mt-0">
+            <a rel="nofollow" href="https://www.facebook.com/sharer.php?u=https://<?= $link; ?>" class=" btn btn-primary btn-circle">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a rel="nofollow" href="https://twitter.com/share?url=https://<?= $link; ?>" class=" btn btn-info btn-circle">
+                <i class="fab fa-twitter text-light"></i>
+            </a>
+            <a rel="nofollow" href="whatsapp://send?text=https://<?= $link; ?>" class=" btn  btn-circle" style="background-color: #25D366;">
+                <i class="fab fa-whatsapp text-light"></i>
+            </a>
+            <a rel="nofollow" href="https://plus.google.com/share?url=https://<?= $link; ?>" class=" btn btn-danger  btn-circle">
+                <i class="fab fa-google-plus text-light"></i>
+            </a>
+        </div>
+
     </div>
 </div>
 
