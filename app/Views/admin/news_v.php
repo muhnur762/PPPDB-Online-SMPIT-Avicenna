@@ -60,7 +60,7 @@
                                 <td>
                                     <?= $data['created_at']; ?>
                                 </td>
-                                <td>
+                                <td align="center">
                                     <a href="/admin/news/<?= $data['slug']; ?>" class="btn btn-primary">Detail</a>
                                 </td>
                             </tr>

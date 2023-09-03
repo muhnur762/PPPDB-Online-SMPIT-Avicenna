@@ -89,7 +89,7 @@ class Web extends BaseController
     }
     public function news()
     {
-        // $currenPage = $this->request->getVar('page_blog') ? $this->request->getVar('page_blog') : 1;
+        $currenPage = $this->request->getVar('page_blog') ? $this->request->getVar('page_blog') : 1;
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
             $blog = $this->BlogModel->search($keyword);
@@ -162,10 +162,12 @@ class Web extends BaseController
     }
     public function Foto()
     {
+        $currenPage = $this->request->getVar('page_foto') ? $this->request->getVar('page_foto') : 1;
         $data = [
             'title' => "Gallery Foto | SMPIT AVICENNA",
-            'foto' => $this->FotoModel->paginate(20, 'foto'),
-            'pager' => $this->FotoModel->pager
+            'foto' => $this->FotoModel->orderBy('created_at', 'DESC')->paginate(20, 'foto'),
+            'pager' => $this->FotoModel->pager,
+            'page' => $currenPage
         ];
         return view('web/foto_v', $data);
     }

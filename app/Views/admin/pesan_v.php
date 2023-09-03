@@ -3,7 +3,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Images</h1>
+    <h1 class="h3 mb-2 text-gray-800">Message</h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>">Home</a></li>
@@ -53,7 +53,7 @@
                                 <td>
                                     <?= $data['created_at']; ?>
                                 </td>
-                                <td>
+                                <td align="center">
                                     <?php
                                     if ($data['status'] == '1') {
                                     ?>

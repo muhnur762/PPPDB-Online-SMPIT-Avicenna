@@ -103,7 +103,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">PPDB:</h6>
                     <a class="collapse-item" href="/admin/timeLine">Time Line</a>
-                    <a class="collapse-item" href="#">Pendaftaran</a>
+                    <a class="collapse-item" href="/admin/dataPendaftaran">Pendaftaran</a>
+                    <a class="collapse-item" href="/admin/pengumuman">Pengumuman</a>
                 </div>
             </div>
         </li>
@@ -115,6 +116,19 @@
                 <i class="fas fa-fw fa-comment"></i>
                 <span>Message</span></a>
         </li>
+
+        <!-- dami -->
+        <!-- <li class="nav-item">
+            <a class="nav-link" href="/admin/pesan">
+                <i class="fas fa-fw fa-book"></i>
+                <span>Data Pendaftar</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/pesan">
+                <i class="fas fa-fw fa-comment"></i>
+                <span>Pengumuman</span></a>
+        </li> -->
     <?php endif;  ?>
     <?php if (in_groups('user')) :  ?>
         <!-- Divider -->

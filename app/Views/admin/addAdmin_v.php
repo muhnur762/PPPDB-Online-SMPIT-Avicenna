@@ -3,8 +3,7 @@ $this->extend('tamplate/admin/index');
 $this->section('content');
 ?>
 <div class="container-fluid">
-    <h1 class="h3 m-3 text-gray-800">Add</h1>
-
+    <h1 class="h3 m-3 text-gray-800">Add <?= $role; ?></h1>
 
     <div class="shadow rounded bg-light m-3 p-5">
 
@@ -24,8 +23,12 @@ $this->section('content');
                     <label for="inputState">Role</label>
                     <select id="inputState" class="form-control" name="role">
                         <?php
-                        $role = array("Super Admin", "Admin", "User");
-                        foreach ($role as $r) :
+                        if ($role == 'Admin') {
+                            $role_array = array("Super Admin", "Admin");
+                        } else if ($role == 'User') {
+                            $role_array = array("User");
+                        }
+                        foreach ($role_array as $r) :
                         ?>
                             <option value="<?= strtolower($r); ?>" <?= (old('role')) ? 'selected' : '' ?>><?= $r; ?></option>
                         <?php
@@ -49,9 +52,16 @@ $this->section('content');
                 </div>
             </div>
             <p class="text-danger">Defauld Password "avicenna123"</p>
+            <div class="d-flex justify-content-between">
+                <div class="d-inline">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-danger">Cancel</button>
+                </div>
+                <div class="d-inline">
+                    <a href="<?= base_url('admin/adminList'); ?>" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="reset" class="btn btn-secondary">Cancel</button>
         </form>
 
 

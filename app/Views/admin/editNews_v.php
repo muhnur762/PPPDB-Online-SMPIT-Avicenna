@@ -45,10 +45,10 @@ $this->section('content');
                 </div>
                 <div class="col-md-6">
                     <div class="form-outline">
-                        <label class="form-label <?= (validation_show_error('kategori')) ? 'is-invalid' : ''; ?>" for="form6Example2">Category</label>
-                        <select class="form-control" name="kategori" value="<?= old('kategori'); ?>">
+                        <label class="form-label" for="form6Example2">Category</label>
+                        <select class="form-control <?= (validation_show_error('kategori')) ? 'is-invalid' : ''; ?>" name="kategori" value="<?= old('kategori'); ?>">
                             <?php
-                            $kategori = array("Pengumuman", "Pretasi", "Kegiatan", "Lainnya");
+                            $kategori = array("Pengumuman", "Prestasi", "Kegiatan", "Lainnya");
                             foreach ($kategori as $k) :
                                 if (old('kategori')) {
                                     $validate = old('kategori');

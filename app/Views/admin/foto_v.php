@@ -61,10 +61,10 @@
                                 <td>
                                     <?= $data['created_at']; ?>
                                 </td>
-                                <td>
+                                <td align="center">
                                     <?php $id_hash = base64_encode($data['id'])  ?>
                                     <a href="/admin/editFoto/<?= $id_hash ?>" class="btn btn-warning">Edit</a>
-                                    <form action="/admin/foto/<?= $data['id']; ?>" method="post" class="d-inline">
+                                    <form action="/admin/foto/<?= $data['id']; ?>" method="post" class="d-inline-block mt-1">
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you can delete this data?');">Delete</button>

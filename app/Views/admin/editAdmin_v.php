@@ -7,11 +7,13 @@ $this->section('content');
 
 
     <div class="shadow rounded bg-light m-3 p-5">
+
         <form action="/admin/updateAdmin/<?= $admin[0]['id_user']; ?>" method="post">
             <?= csrf_field(); ?>
 
             <input type="hidden" name="id_user" value="<?= $admin[0]['id_user']; ?>">
             <input type="hidden" name="password" value="<?= $admin[0]['password_hash']; ?>">
+            <input type="hidden" name="role" value="<?= $admin[0]['role']; ?>">
 
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -62,17 +64,36 @@ $this->section('content');
                     <?= (validation_show_error('username')); ?>
                 </div>
             </div>
-
-            <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure to change this data ?');">Submit</button>
+            <div class="d-flex justify-content-between">
+                <div class="d-inline">
+                    <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure to change this data ?');">Submit</button>
         </form>
-        <form action="/admin/resetPassword/<?= $admin[0]['id_user']; ?>" method="post">
+    </div>
+    <div class="d-inline">
+        <?php
+        if ($admin[0]['role'] == 'user') {
+            $rute = 'userList';
+        } else {
+            $rute = 'adminList';
+        }
+        ?>
+        <a href="<?= base_url('admin/' . $rute); ?>" class="btn btn-secondary">Back</a>
+
+        <form action="/admin/resetPassword/<?= $admin[0]['id_user']; ?>" method="post" class="btn-danger d-inline">
             <input type="hidden" name="id_user" value="<?= $admin[0]['id_user']; ?>">
-            <button type="submit" class="btn btn-danger mt-5" onclick="return confirm('Are you sure to reset this password ?');">Reset Password</button>
+            <button type="submit" class="btn btn-danger d-inline" onclick="return confirm('Are you sure to reset this password ?');">Reset Password</button>
             <p class="text-danger mt-1">Defauld Password "avicenna123"</p>
         </form>
 
-
     </div>
+</div>
+
+
+
+
+
+
+</div>
 
 </div>
 <?php $this->endSection();  ?>

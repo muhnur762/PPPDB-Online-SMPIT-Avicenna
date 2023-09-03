@@ -56,11 +56,6 @@ $this->section('content');
                         <a href="/admin/news" class="btn btn-secondary  ">Back</a>
                     </div>
                 </div>
-
-
-
-
-
             </div>
         </div>
     </div>

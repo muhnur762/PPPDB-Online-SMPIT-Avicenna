@@ -55,7 +55,16 @@ $this->section('content');
 
 
             <!-- Submit button -->
-            <input type="submit" value="Submit" class="btn btn-primary mb-4" />
+
+            <div class="d-flex justify-content-between">
+                <div class="d-inline">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                    <button class="btn btn-danger" type="reset">Cancel</button>
+                </div>
+                <div class="d-inline">
+                    <a href="/admin/foto" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
         </form>
     </div>
 

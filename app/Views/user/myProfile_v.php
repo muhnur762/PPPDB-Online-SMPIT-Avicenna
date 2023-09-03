@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputState">Role</label>
-                                    <input type="text" name="role" class="form-control " id="inputEmail4" placeholder="Email" value="<?= $admin['role']; ?>" readonly>
+                                    <input type="text" name="role" class="form-control " id="inputEmail4" placeholder="Email" value="<?= ucwords($admin['role']); ?>" readonly>
                                 </div>
 
 
@@ -81,7 +81,7 @@
         <div class="col-xl-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Ganti Password</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Change Password</h6>
                 </div>
                 <div class="card-body">
                     <?php if (session()->getFlashdata('pesan2')) :  ?>
@@ -95,15 +95,7 @@
                     <form action="/user/gantiPassword/<?= $admin['id_user']; ?>" method="post">
                         <input type="hidden" name="username" value="<?= $admin['username']; ?>">
                         <div class="form-group">
-                            <label for="inputpassword">Old password</label>
-                            <input type="password" name="oldpassword" class="form-control <?= (validation_show_error('oldpassword')) ? 'is-invalid' : ''; ?>" id="inputpassword">
-
-                            <div id="validationServer03Feedback" class="invalid-feedback">
-                                <?= (validation_show_error('oldpassword')); ?>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputpassword">Password</label>
+                            <label for="inputpassword">New Password</label>
                             <input type="password" name="password" class="form-control <?= (validation_show_error('password')) ? 'is-invalid' : ''; ?>" id="inputpassword">
 
                             <div id="validationServer03Feedback" class="invalid-feedback">
@@ -118,7 +110,7 @@
                                 <?= (validation_show_error('confirmpassword')); ?>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-danger" onclick="confirm('Are you sure to change this data ?')">Save</button>
+                        <button type="submit" class="btn btn-danger" onclick="confirm('Apakah anda yakin ingin mengubah password ?')">Save</button>
 
                     </form>
                 </div>

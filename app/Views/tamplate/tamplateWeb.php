@@ -75,7 +75,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary ms-2 text-light" style="width: 100px;" href="/ppdb">PPDB</a>
+                        <a class="nav-link btn ms-2 text-light " style="width: 100px; background-color:#4c4d99;" href="/ppdb">PPDB</a>
                     </li>
 
                 </ul>
@@ -87,7 +87,7 @@
     <?php $this->renderSection('content') ?>
 
     <div class="upbox" id="upbox">
-        <a href="#" class="btn btn-primary"> <i class="bi bi-arrow-up-short"></i></a>
+        <a href="#" class="btn shadow" style="background-color:#4c4d99;"> <i class="bi bi-arrow-up-short text-light"></i></a>
     </div>
 
     <!-- footer -->
@@ -97,6 +97,7 @@
                 <div class="col mb-3">
                     <h3 class="fw-bold">SMPIT AVICENNA</h3>
                     <p>Mulia Dalam Akhlak Unggul Dalam Prestasi</p>
+                    <hr>
                 </div>
             </div>
             <div class="row">
@@ -105,28 +106,28 @@
                     <p> Vila Indah Permai Blok G26 Teluk Pucung, Teluk Pucung, Kec. Bekasi Utara, Kota Bekasi Prov. Jawa Barat</p>
                     <br>
                     <h5>Contact</h5>
-                    <a href="" class="d-block text-decoration-none text-light">Telp : 0987-097-887</a>
-                    <a href="" class="d-block text-decoration-none text-light">Fax : 0987654335</a>
-                    <a href="" class="d-block text-decoration-none text-light">email : email.gmail.com</a>
+                    <a href="" class="d-block text-decoration-none text-light nav-footer">Telp : 0987-097-887</a>
+                    <a href="" class="d-block text-decoration-none text-light nav-footer">Fax : 0987654335</a>
+                    <a href="" class="d-block text-decoration-none text-light nav-footer">email : email.gmail.com</a>
 
 
                 </div>
                 <div class="col-lg-4 px-4 mb-5">
                     <div class="row">
                         <div class="col-md-6 mb-5">
-                            <h5>Lorem, ipsum.</h5>
-                            <a href="" class="d-block text-decoration-none text-light">Profile Singkat</a>
-                            <a href="" class="d-block text-decoration-none text-light">Sambutan Kepala sekolah</a>
-                            <a href="" class="d-block text-decoration-none text-light">Visi Misi</a>
-                            <a href="" class="d-block text-decoration-none text-light">Program Unggulan</a>
-                            <a href="" class="d-block text-decoration-none text-light">Fasilitas</a>
-                            <a href="" class="d-block text-decoration-none text-light">Ekstrakulikuler</a>
+                            <h5>About Us</h5>
+                            <a href="/profile" class="d-block text-decoration-none text-light nav-footer">Profile Singkat</a>
+                            <a href="/sambutan" class="d-block text-decoration-none text-light nav-footer">Sambutan Kepala sekolah</a>
+                            <a href="/visimisi" class="d-block text-decoration-none text-light nav-footer">Visi Misi</a>
+                            <a href="/program" class="d-block text-decoration-none text-light nav-footer">Program Unggulan</a>
+                            <a href="/fasilitas" class="d-block text-decoration-none text-light nav-footer">Fasilitas</a>
+                            <a href="ekstrakulikuler" class="d-block text-decoration-none text-light nav-footer">Ekstrakulikuler</a>
                         </div>
                         <div class="col-md-6">
-                            <h5>Tautan</h5>
-                            <a href="" class="d-block text-decoration-none text-light">Sekolah Kita</a>
-                            <a href="" class="d-block text-decoration-none text-light">Lorem, ipsum.</a>
-                            <a href="" class="d-block text-decoration-none text-light">PPDB Online</a>
+                            <h5>Link</h5>
+                            <a href="" class="d-block text-decoration-none text-light nav-footer">Sekolah Kita</a>
+                            <a href="" class="d-block text-decoration-none text-light nav-footer">Lorem, ipsum.</a>
+                            <a href="/ppdb" class="d-block text-decoration-none text-light nav-footer">PPDB Online</a>
                         </div>
                     </div>
 
@@ -142,7 +143,7 @@
             <div class="row">
                 <div class="col">
                     <hr>
-                    Copyright <?= date('Y'); ?>
+                    <span>Copyright <i class="bi bi-heart-fill text-danger"></i> KKP SMPIT AVICENNA <?= date('Y'); ?></span>
                 </div>
             </div>
         </div>
@@ -156,7 +157,7 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({
-            duration: 500,
+            duration: 1000,
             once: true,
             offset: 200,
         });

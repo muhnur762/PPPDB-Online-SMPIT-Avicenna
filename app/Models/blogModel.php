@@ -12,7 +12,7 @@ class BlogModel extends Model
 
     public function blogLimit()
     {
-        return $this->orderBy('created_at', 'DESC')->paginate(3);
+        return $this->where('kategori !=', 'Pengumuman')->orderBy('created_at', 'DESC')->paginate(3);
     }
     public function pengumumanLimit()
     {

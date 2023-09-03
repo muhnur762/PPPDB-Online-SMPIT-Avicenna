@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body style=" background: linear-gradient(158deg, rgba(121,9,105,1) 0%, rgba(0,255,209,1) 99%);;">
 
     <div class="container">
 
@@ -36,7 +36,7 @@
                             <div class="col-lg">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4"><?= lang('Auth.loginTitle') ?></h1>
+                                        <h1 class="h1 text-gray-900 mb-4"><?= lang('Auth.loginTitle') ?></h1>
                                     </div>
 
                                     <?= view('Myth\Auth\Views\_message_block') ?>

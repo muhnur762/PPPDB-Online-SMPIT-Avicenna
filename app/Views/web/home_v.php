@@ -59,10 +59,11 @@
         <div class="container">
 
             <!-- banner -->
-
-            <div class="banner-2" data-aos="fade-up">
-                <img src="assets/other/<?= $banner[0]['image']; ?>" alt="" class="w-100">
-            </div>
+            <a href="<?= base_url('/ppdb'); ?>" class="d-block">
+                <div class="banner-2" data-aos="fade-up">
+                    <img src="assets/other/<?= $banner[0]['image']; ?>" alt="" class="w-100">
+                </div>
+            </a>
             <!-- end Banner -->
 
             <div class="blog-card" data-aos="fade-up">
@@ -143,106 +144,106 @@
     <!-- Program Unggulan -->
     <div class="program">
         <div class="wave bawah" id="program">
-            <svg id="wave" style="transform:rotate(180deg); transition: 0.3s" viewBox="0 0 1440 230" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <svg id="wave" style="transform:rotate(180deg); transition: 0.3s" viewBox="0 0 1440 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
+                    <linearGradient id="sw-gradient-1" x1="0" x2="0" y1="1" y2="0">
                         <stop stop-color="rgba(255, 255, 255, 1)" offset="0%"></stop>
                         <stop stop-color="rgba(255, 255, 255, 1)" offset="100%"></stop>
                     </linearGradient>
                 </defs>
-                <path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,161L80,145.7C160,130,320,100,480,84.3C640,69,800,69,960,76.7C1120,84,1280,100,1440,122.7C1600,146,1760,176,1920,157.2C2080,138,2240,69,2400,46C2560,23,2720,46,2880,57.5C3040,69,3200,69,3360,57.5C3520,46,3680,23,3840,11.5C4000,0,4160,0,4320,7.7C4480,15,4640,31,4800,42.2C4960,54,5120,61,5280,76.7C5440,92,5600,115,5760,107.3C5920,100,6080,61,6240,61.3C6400,61,6560,100,6720,107.3C6880,115,7040,92,7200,80.5C7360,69,7520,69,7680,76.7C7840,84,8000,100,8160,122.7C8320,146,8480,176,8640,191.7C8800,207,8960,207,9120,172.5C9280,138,9440,69,9600,34.5C9760,0,9920,0,10080,26.8C10240,54,10400,107,10560,111.2C10720,115,10880,69,11040,65.2C11200,61,11360,100,11440,118.8L11520,138L11520,230L11440,230C11360,230,11200,230,11040,230C10880,230,10720,230,10560,230C10400,230,10240,230,10080,230C9920,230,9760,230,9600,230C9440,230,9280,230,9120,230C8960,230,8800,230,8640,230C8480,230,8320,230,8160,230C8000,230,7840,230,7680,230C7520,230,7360,230,7200,230C7040,230,6880,230,6720,230C6560,230,6400,230,6240,230C6080,230,5920,230,5760,230C5600,230,5440,230,5280,230C5120,230,4960,230,4800,230C4640,230,4480,230,4320,230C4160,230,4000,230,3840,230C3680,230,3520,230,3360,230C3200,230,3040,230,2880,230C2720,230,2560,230,2400,230C2240,230,2080,230,1920,230C1760,230,1600,230,1440,230C1280,230,1120,230,960,230C800,230,640,230,480,230C320,230,160,230,80,230L0,230Z"></path>
+                <path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-1)" d="M0,161L80,145.7C160,130,320,100,480,84.3C640,69,800,69,960,76.7C1120,84,1280,100,1440,122.7C1600,146,1760,176,1920,157.2C2080,138,2240,69,2400,46C2560,23,2720,46,2880,57.5C3040,69,3200,69,3360,57.5C3520,46,3680,23,3840,11.5C4000,0,4160,0,4320,7.7C4480,15,4640,31,4800,42.2C4960,54,5120,61,5280,76.7C5440,92,5600,115,5760,107.3C5920,100,6080,61,6240,61.3C6400,61,6560,100,6720,107.3C6880,115,7040,92,7200,80.5C7360,69,7520,69,7680,76.7C7840,84,8000,100,8160,122.7C8320,146,8480,176,8640,191.7C8800,207,8960,207,9120,172.5C9280,138,9440,69,9600,34.5C9760,0,9920,0,10080,26.8C10240,54,10400,107,10560,111.2C10720,115,10880,69,11040,65.2C11200,61,11360,100,11440,118.8L11520,138L11520,230L11440,230C11360,230,11200,230,11040,230C10880,230,10720,230,10560,230C10400,230,10240,230,10080,230C9920,230,9760,230,9600,230C9440,230,9280,230,9120,230C8960,230,8800,230,8640,230C8480,230,8320,230,8160,230C8000,230,7840,230,7680,230C7520,230,7360,230,7200,230C7040,230,6880,230,6720,230C6560,230,6400,230,6240,230C6080,230,5920,230,5760,230C5600,230,5440,230,5280,230C5120,230,4960,230,4800,230C4640,230,4480,230,4320,230C4160,230,4000,230,3840,230C3680,230,3520,230,3360,230C3200,230,3040,230,2880,230C2720,230,2560,230,2400,230C2240,230,2080,230,1920,230C1760,230,1600,230,1440,230C1280,230,1120,230,960,230C800,230,640,230,480,230C320,230,160,230,80,230L0,230Z"></path>
             </svg>
         </div>
-        <div class="container pb-5 px-md-0 px-4 " data-aos="fade-up">
-            <h1 class="judul-utama putih text-light">Our Programe</h1>
-            <div class="row">
-                <div class="col-lg-6">
+        <div class="div w-100">
+            <div class="container pb-5 px-md-0 px-4" data-aos="fade-up">
+                <h1 class="judul-utama putih text-light">Our Programe</h1>
+                <div class="row">
+                    <div class="col-lg-6">
 
-                    <div class="row">
-                        <div class="col-lg-2 no-program">
-                            <h4>
-                                1
-                            </h4>
+                        <div class="row">
+                            <div class="col-lg-2 no-program">
+                                <h4>
+                                    1
+                                </h4>
+                            </div>
+                            <div class="col-lg-10 isi-program">
+                                <p>Program Tahsin dengan Metode Talaqqi</p>
+                            </div>
                         </div>
-                        <div class="col-lg-10 isi-program">
-                            <p>Program Tahsin dengan Metode Talaqqi</p>
+                        <div class="row">
+                            <div class="col-lg-2 no-program">
+                                <h4>
+                                    2
+                                </h4>
+                            </div>
+                            <div class="col-lg-10 isi-program">
+                                <p>Program Tahfidz 2-3 Juz</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2 no-program">
+                                <h4>
+                                    3
+                                </h4>
+                            </div>
+                            <div class="col-lg-10 isi-program">
+                                <p>Bina Pribadi Islam (BPI)</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2 no-program">
+                                <h4>
+                                    4
+                                </h4>
+                            </div>
+                            <div class="col-lg-10 isi-program">
+                                <p>Penerapan Kurikulum SIT dan Kurikulum merdeka Belajar</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-2 no-program">
-                            <h4>
-                                2
-                            </h4>
-                        </div>
-                        <div class="col-lg-10 isi-program">
-                            <p>Program Tahfidz 2-3 Juz</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2 no-program">
-                            <h4>
-                                3
-                            </h4>
-                        </div>
-                        <div class="col-lg-10 isi-program">
-                            <p>Bina Pribadi Islam (BPI)</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2 no-program">
-                            <h4>
-                                4
-                            </h4>
-                        </div>
-                        <div class="col-lg-10 isi-program">
-                            <p>Penerapan Kurikulum SIT dan Kurikulum merdeka Belajar</p>
-                        </div>
-                    </div>
+                    <div class="col-lg-6">
 
-                </div>
-                <div class="col-lg-6">
-
-                    <div class="row">
-                        <div class="col-lg-2 no-program">
-                            <h4>
-                                5
-                            </h4>
+                        <div class="row">
+                            <div class="col-lg-2 no-program">
+                                <h4>
+                                    5
+                                </h4>
+                            </div>
+                            <div class="col-lg-10 isi-program">
+                                <p>Public Speaking (Arab & Inggris)</p>
+                            </div>
                         </div>
-                        <div class="col-lg-10 isi-program">
-                            <p>Public Speaking (Arab & Inggris)</p>
+                        <div class="row">
+                            <div class="col-lg-2 no-program">
+                                <h4>
+                                    6
+                                </h4>
+                            </div>
+                            <div class="col-lg-10 isi-program">
+                                <p>Program Takhossus Al-Qur'an 5-6 Juz</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2 no-program">
-                            <h4>
-                                6
-                            </h4>
+                        <div class="row">
+                            <div class="col-lg-2 no-program">
+                                <h4>
+                                    7
+                                </h4>
+                            </div>
+                            <div class="col-lg-10 isi-program">
+                                <p>Karakter Buiding</p>
+                            </div>
                         </div>
-                        <div class="col-lg-10 isi-program">
-                            <p>Program Takhossus Al-Qur'an 5-6 Juz</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2 no-program">
-                            <h4>
-                                7
-                            </h4>
-                        </div>
-                        <div class="col-lg-10 isi-program">
-                            <p>Karakter Buiding</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2 no-program">
-                            <h4>
-                                8
-                            </h4>
-                        </div>
-                        <div class="col-lg-10 isi-program">
-                            <p>Program syahadah Al-Qur'an</p>
+                        <div class="row">
+                            <div class="col-lg-2 no-program">
+                                <h4>
+                                    8
+                                </h4>
+                            </div>
+                            <div class="col-lg-10 isi-program">
+                                <p>Program syahadah Al-Qur'an</p>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -275,7 +276,7 @@
                 </div>
                 <div class="item">
                     <div class="responsive-vidio">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/g89I-FHB-6M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/gw2sJPl3E1I?controls=1"></iframe>
                     </div>
                 </div>
                 <div class="item">

@@ -34,7 +34,7 @@ $this->section('content');
         </div>
     </form>
     <p class="text-danger">Note :
-        disarankan menggunakan perbandingan 1:1
+        disarankan menggunakan perbandingan 4,5 : 1
     </p>
     <?php if (session()->getFlashdata('pesan')) :  ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">

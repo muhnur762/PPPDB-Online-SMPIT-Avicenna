@@ -2,17 +2,26 @@
 
 namespace App\Controllers;
 
+use App\Models\AsalsklModel;
+use App\Models\AyahModel;
 use App\Models\BlogModel;
 use App\Models\SambutModel;
 use App\Models\FotoModel;
 use App\Models\BannerModel;
+use App\Models\FileModel;
+use App\Models\IbuModel;
+use App\Models\JamsosModel;
+use App\Models\KesehatanModel;
 use App\Models\PesanModel;
 use App\Models\PpdbModel;
 use App\Models\UsersModel;
 use App\Models\PendaftaranModel;
+use App\Models\PengumumanModel;
+use App\Models\PrestasiModel;
 use App\Models\SaudaraModel;
 use App\Models\SiswaModel;
 use App\Models\TmpttglModel;
+use App\Models\WaliModel;
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Password;
 
@@ -25,8 +34,9 @@ class Admin extends BaseController
     protected $PesanModel;
     protected $UsersModel;
     protected $PpdbModel;
-    protected $SiswaModel, $SaudaraModel, $TmpttglModel;
+    protected $SiswaModel, $SaudaraModel, $TmpttglModel, $JamsosModel, $kesehatanModel, $AsalsklModel, $AyahModel, $IbuModel, $WaliModel, $PrestasiModel, $FileModel;
     protected $PendaftaranModel;
+    protected $PengumumanModel;
 
     protected $helpers = ['form'];
     public function __construct()
@@ -42,6 +52,15 @@ class Admin extends BaseController
         $this->SaudaraModel = new SaudaraModel();
         $this->PendaftaranModel = new PendaftaranModel();
         $this->TmpttglModel = new TmpttglModel();
+        $this->JamsosModel = new JamsosModel();
+        $this->kesehatanModel = new KesehatanModel();
+        $this->AsalsklModel = new AsalsklModel();
+        $this->AyahModel = new AyahModel();
+        $this->IbuModel = new IbuModel();
+        $this->WaliModel = new WaliModel();
+        $this->PrestasiModel = new PrestasiModel();
+        $this->FileModel = new FileModel();
+        $this->PengumumanModel = new PengumumanModel();
     }
 
     public function adminList()
@@ -67,7 +86,18 @@ class Admin extends BaseController
     public function addAdmin()
     {
         $data = [
-            'title' => "Add | Admin SMPIT AVICENNA",
+            'title' => "Add Admin | Admin SMPIT AVICENNA",
+            'role' => 'Admin'
+
+        ];
+        // dd($this->UsersModel->getAdmin());
+        return view('admin/addAdmin_v', $data);
+    }
+    public function addUser()
+    {
+        $data = [
+            'title' => "Add User | Admin SMPIT AVICENNA",
+            'role' => 'User'
 
         ];
         // dd($this->UsersModel->getAdmin());
@@ -112,7 +142,7 @@ class Admin extends BaseController
             'active' => 1
         ]);
 
-
+        // jika yang di add adalah user tambahkan tabel baru untuk seluruh form
         if ($this->request->getVar('role') == 'user') {
             $data = $this->UsersModel->getProfile($this->request->getVar('username'));
             $user_id = $data[0]['id_user'];
@@ -135,16 +165,62 @@ class Admin extends BaseController
             $this->TmpttglModel->save([
                 'id_daftar' =>  $id_pendaftran,
             ]);
+            // tabel baru tabel jaminan sosial
+            $this->JamsosModel->save([
+                'id_daftar' =>  $id_pendaftran,
+            ]);
+            // tabel baru tabel kesehatan
+            $this->kesehatanModel->save([
+                'id_daftar' =>  $id_pendaftran,
+            ]);
+            // tabel baru tabel pndidikan sebelumnya
+            $this->AsalsklModel->save([
+                'id_daftar' =>  $id_pendaftran,
+            ]);
+            // tabel baru tabel ayah
+            $this->AyahModel->save([
+                'id_daftar' =>  $id_pendaftran,
+            ]);
+            // tabel baru tabel ibu
+            $this->IbuModel->save([
+                'id_daftar' =>  $id_pendaftran,
+            ]);
+            // tabel baru tabel wali
+            $this->WaliModel->save([
+                'id_daftar' =>  $id_pendaftran,
+            ]);
+            // tabel baru tabel prestasi
+            $this->PrestasiModel->save([
+                'id_daftar' =>  $id_pendaftran,
+            ]);
+            // tabel baru tabel file
+            $this->FileModel->save([
+                'id_daftar' =>  $id_pendaftran,
+            ]);
         }
 
-        session()->setFlashdata('pesan', 'Admin/User successfully added');
-        return redirect()->to('/admin/userList');
+        // jika role user maka arahkan ke data user
+        if ($this->request->getVar('role') == 'user') {
+            $rute = 'userList';
+        } else {
+            $rute = 'adminList';
+        }
+        session()->setFlashdata('pesan', 'Successfully added');
+        return redirect()->to('admin/' . $rute);
     }
     public function deleteAdmin($id_user)
     {
+        // menghapus berdasar id
         $this->UsersModel->delete($id_user);
-        session()->setFlashdata('pesan', 'Admin/User successfully deleted');
-        return redirect()->to('/admin/userList');
+
+        // mengecek role
+        if ($this->request->getVar('role') == 'user') {
+            $rute = 'userList';
+        } else {
+            $rute = 'adminList';
+        }
+        session()->setFlashdata('pesan', 'Successfully deleted');
+        return redirect()->to(base_url('admin/' . $rute));
     }
     public function editAdmin($id_user)
     {
@@ -152,7 +228,6 @@ class Admin extends BaseController
         $data = [
             'title' => "Edit | Admin SMPIT AVICENNA",
             'admin' => $this->UsersModel->getAllrole($id_decode)
-
         ];
         // dd($this->UsersModel->getAllrole($id_user));
         return view('admin/editAdmin_v', $data);
@@ -196,19 +271,26 @@ class Admin extends BaseController
         ])) {
             return redirect()->back()->withInput();
         }
-
-        $userMyth = new UserModel();
-        $userMyth->withGroup($this->request->getVar('role'))->save([
+        // $userMyth = new UserModel();
+        // $userMyth->withGroup($this->request->getVar('role'))->save([
+        //     'id' => $this->request->getVar('id_user'),
+        //     'email' => $this->request->getVar('email'),
+        //     'username' => $this->request->getVar('username'),
+        //     'fullname' => $this->request->getVar('fullname'),
+        // ]);
+        $this->UsersModel->save([
             'id' => $this->request->getVar('id_user'),
             'email' => $this->request->getVar('email'),
             'username' => $this->request->getVar('username'),
             'fullname' => $this->request->getVar('fullname'),
-            'password_hash' => $this->request->getVar('password'),
-
         ]);
-
-        session()->setFlashdata('pesan', 'Admin/User successfully edited');
-        return redirect()->to('/admin/userList');
+        if ($this->request->getVar('role') == 'user') {
+            $route = 'userList';
+        } else {
+            $route = 'adminList';
+        }
+        session()->setFlashdata('pesan', 'Successfully edited');
+        return redirect()->to('admin/' . $route);
     }
 
 
@@ -288,7 +370,7 @@ class Admin extends BaseController
                 'rules' => 'uploaded[cover]|max_size[cover,1024]|is_image[cover]|mime_in[cover,image/png,image/jpg,image/jpeg]',
                 'errors' => [
                     'uploaded' => 'Image cannot be empty !!',
-                    'max_size' => 'Maximum image size is 10 MB !!',
+                    'max_size' => 'Maximum image size is 1 MB !!',
                     'is_image' => 'What you input is not an image !!',
                     'mime_in' => 'What you input is not an image 2 !!',
                 ],
@@ -411,7 +493,7 @@ class Admin extends BaseController
             'cover' => [
                 'rules' => 'max_size[cover,1024]|is_image[cover]|mime_in[cover,image/png,image/jpg,image/jpeg]',
                 'errors' => [
-                    'max_size' => 'Maximum image size is 10 MB !!',
+                    'max_size' => 'Maximum image size is 1 MB !!',
                     'is_image' => 'What you input is not an image !!',
                     'mime_in' => 'What you input is not an image 2 !!',
                 ],
@@ -528,7 +610,7 @@ class Admin extends BaseController
                 'rules' => 'uploaded[cover]|max_size[cover,1024]|is_image[cover]|mime_in[cover,image/png,image/jpg,image/jpeg]',
                 'errors' => [
                     'uploaded' => 'Image cannot be empty !!',
-                    'max_size' => 'Maximum image size is 10 MB !!',
+                    'max_size' => 'Maximum image size is 1 MB !!',
                     'is_image' => 'What you input is not an image !!',
                     'mime_in' => 'What you input is not an image !!',
                 ],
@@ -594,7 +676,7 @@ class Admin extends BaseController
             'cover' => [
                 'rules' => 'max_size[cover,1024]|is_image[cover]|mime_in[cover,image/png,image/jpg,image/jpeg]',
                 'errors' => [
-                    'max_size' => 'Maximum image size is 10 MB !!',
+                    'max_size' => 'Maximum image size is 1 MB !!',
                     'is_image' => 'What you input is not an image !!',
                     'mime_in' => 'What you input is not an image 2 !!',
                 ],
@@ -641,7 +723,7 @@ class Admin extends BaseController
     {
         if (!$this->validate([
             'image' => [
-                'rules' => 'uploaded[image]|max_size[image,2024]|is_image[image]|mime_in[image,image/png,image/jpg,image/jpeg]',
+                'rules' => 'uploaded[image]|max_size[image,2048]|is_image[image]|mime_in[image,image/png,image/jpg,image/jpeg]',
                 'errors' => [
                     'uploaded' => 'Image cannot be empty !!',
                     'max_size' => 'Maximum image size is 2 MB !!',
@@ -694,6 +776,61 @@ class Admin extends BaseController
         ];
         return view('admin/editpesan_v', $data);
     }
+    public function updatePesan($id)
+    {
+        if (!$this->validate([
+            'jawaban' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Message cannot be empty !!',
+                ],
+            ],
+
+        ])) {
+            return redirect()->back()->withInput();
+        }
+
+        $data = $this->PesanModel->where('id', $id)->first();
+        $jawaban = $this->request->getVar('jawaban');
+
+        $email_tujuan = $data['email'];
+        $subject = 'Admin SMPIT Avicenna';
+        $pertanyaan = $data['pesan'];
+        $pesan = "Assalamu'alaikum warahmatullahi wabarakatuh <br><br>
+        kepada Bapak/Ibu <b>" . $data['nama'] . "</b>.<br><br>
+        <b>Pertanyaan:</b><br>"
+            . $data['pesan'] .
+            "<br><br>
+        <b>Jawaban:</b><br>"
+            . $jawaban .
+            "<br><br><b>Terima kasih telah menghubungi kami kami</b>";
+
+
+
+
+        $email = service('email');
+        $email->setTo($email_tujuan);
+        $email->setFrom('muhnur7602@gmail.com', 'SMPIT AVICENNA');
+        $email->setSubject($subject);
+        $email->setMessage($pesan);
+
+
+        if ($email->send()) {
+
+
+            $this->PesanModel->save([
+                'id' => $id,
+                'jawaban' => $jawaban,
+                'status' => '2',
+            ]);
+
+            session()->setFlashdata('pesan', 'Message successfully sent !!');
+            return redirect()->to('/admin/pesan');
+        } else {
+            $data = $email->printDebugger(['headers']);
+            print_r($data);
+        }
+    }
 
 
     public function timeLine()
@@ -720,23 +857,6 @@ class Admin extends BaseController
     }
     public function updateTimeline($id)
     {
-        if (!$this->validate([
-            'judul' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Title cannot be empty !!'
-                ],
-            ],
-            'isi' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Content cannot be empty !!',
-                ],
-            ],
-
-        ])) {
-            return redirect()->back()->withInput();
-        }
 
 
         $this->PpdbModel->save([
@@ -745,5 +865,85 @@ class Admin extends BaseController
             'isi' => $this->request->getVar('isi'),
         ]);
         return redirect()->to('/admin/timeLine');
+    }
+
+    public function dataPendaftaran()
+    {
+
+        $data = [
+            'title' => 'Data PPDB | Admin SMPIT AVICENNA',
+            'tb_daftar' => $this->PendaftaranModel->dataDaftar()
+        ];
+        return view('admin/dataPendaftaran_v', $data);
+    }
+    public function detailDaftar($id)
+    {
+        $id_benar = substr($id, 9);
+        $tb_daftar = $this->PendaftaranModel->detaildaftar($id_benar);
+        $status = $this->PendaftaranModel->select('status')->where('id', $tb_daftar['id_daftar'])->first();
+        $dt_user = $this->PendaftaranModel->dataverifikator($tb_daftar['id_daftar']);
+
+
+        $data = [
+            'title' => 'Detail PPDB | Admin SMPIT AVICENNA',
+            'tb_daftar' => $tb_daftar,
+            'status' => $status['status'],
+            'dt_user' => $dt_user
+        ];
+        return view('admin/detailDaftar_v', $data);
+    }
+    public function verifikasi($id)
+    {
+        $this->PendaftaranModel->save([
+            'id' => $id,
+            'verifikator' => $this->request->getVar('user_id'),
+            'tgl_verifikasi' => $this->request->getVar('tgl_verif'),
+            'status' => '2',
+        ]);
+        session()->setFlashdata('pesan', '#' . $this->request->getVar('id_pendaf') . ' Berhasil Diverifikasi !');
+        return redirect()->to('/admin/detailDaftar/' . $this->request->getVar('id_pendaf'));
+    }
+    public function pengumuman()
+    {
+
+        $data = [
+            'title' => 'Pengumuman | Admin SMPIT AVICENNA',
+            'dtPengumuman' => $this->PengumumanModel->first(),
+            'tb_daftar' => $this->PendaftaranModel->dataPeng()
+        ];
+        return view('admin/pengumuman_v', $data);
+    }
+    public function updatePeng($id)
+    {
+
+        $this->PengumumanModel->save([
+            'id' => $id,
+            'tanggal' => $this->request->getVar('tanggal'),
+            'status' => '2',
+        ]);
+        session()->setFlashdata('pesan', 'Tanggal berhasil dipasang');
+        return redirect()->to('/admin/pengumuman');
+    }
+    public function resetPeng($id)
+    {
+
+        $this->PengumumanModel->save([
+            'id' => $id,
+            'tanggal' => NULL,
+            'status' => '1',
+        ]);
+        session()->setFlashdata('pesan', 'Tanggal berhasil direset ');
+        return redirect()->to('/admin/pengumuman');
+    }
+    public function aupdateKelulusan($id)
+    {
+
+        $this->PendaftaranModel->save([
+            'id' => $id,
+            'keterangan' => $this->request->getVar('keterangan')
+
+        ]);
+        session()->setFlashdata('pesan2', 'Berhasil ');
+        return redirect()->to('/admin/pengumuman');
     }
 }

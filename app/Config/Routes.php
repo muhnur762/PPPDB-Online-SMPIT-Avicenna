@@ -69,14 +69,20 @@ $routes->get('/admin/editPesan/(:segment)', 'admin::editPesan/$1', ['filter' => 
 $routes->get('/admin/adminList', 'admin::adminList', ['filter' => 'role:super admin']);
 $routes->get('/admin/userList', 'admin::userList', ['filter' => 'role:super admin']);
 $routes->get('/admin/addAdmin', 'admin::addAdmin', ['filter' => 'role:super admin']);
+$routes->get('/admin/addUser', 'admin::addUser', ['filter' => 'role:super admin']);
+$routes->get('/admin/pengumuman', 'admin::pengumuman', ['filter' => 'role:super admin']);
 $routes->get('/admin/userList/(:segment)', 'admin::editAdmin/$1', ['filter' => 'role:super admin']);
 $routes->delete('/admin/userList/(:num)', 'admin::deleteAdmin/$1', ['filter' => 'role:super admin']);
 $routes->delete('/admin/resetPassword/(:num)', 'admin::resetPassword/$1', ['filter' => 'role:super admin']);
 $routes->delete('/admin/timeLine/(:num)', 'admin::deleteTimeine/$1', ['filter' => 'role:super admin']);
 $routes->get('/admin/timeLine', 'admin::timeLine', ['filter' => 'role:super admin']);
 
+$routes->get('/admin/dataPendaftaran', 'admin::dataPendaftaran', ['filter' => 'role:super admin']);
+$routes->get('/admin/detailDaftar/(:num)', 'admin::detailDaftar/$1', ['filter' => 'role:super admin']);
+
 $routes->get('/user', 'user::index', ['filter' => 'role:user']);
 $routes->get('/user/myProfile/(:any)', 'user::myProfile/$1', ['filter' => 'role:user,admin,super admin']);
+$routes->get('/user/pendaftaran/(:any)', 'user::pendaftaran/$1', ['filter' => 'role:user']);
 
 $routes->get('/user/formulir/(:any)', 'user::formulir/$1', ['filter' => 'role:user']);
 
